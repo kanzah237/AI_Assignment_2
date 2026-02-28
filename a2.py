@@ -4,42 +4,38 @@ import tkinter as tk
 from tkinter import font as tkfont
 import heapq, math, time, random
 
-# ═══════════════════════════════════════════════════════
-#  GRID SETTINGS
-# ═══════════════════════════════════════════════════════
+#  Grid
 ROWS        = 22
 COLS        = 30
-CELL        = 26          # pixel size of each cell
-PANEL_W     = 240         # right-panel width
-ANIM_DELAY  = 6           # ms per visited-node tick  (lower = faster sweep)
-AGENT_DELAY = 130         # ms per agent step
-OBS_PROB    = 0.0025      # probability an empty cell becomes a wall per agent step
+CELL        = 26         
+PANEL_W     = 240     
+ANIM_DELAY  = 6        
+AGENT_DELAY = 130       
+OBS_PROB    = 0.0025     
 
-# ═══════════════════════════════════════════════════════
-#  COLOUR PALETTE  (warm, modern, readable)
-# ═══════════════════════════════════════════════════════
+#  Colours
 # Grid
-CL_BG        = "#F8F9FA"   # canvas background
-CL_GRID      = "#DEE2E6"   # grid line colour
-CL_EMPTY     = "#FFFFFF"   # empty cell
-CL_WALL      = "#343A40"   # wall (dark charcoal)
-CL_WALL_STK  = "#495057"   # wall stroke
-CL_START     = "#2ECC71"   # start cell (mint green)
-CL_GOAL      = "#E74C3C"   # goal cell  (warm red)
-CL_VISITED   = "#BDD7EE"   # explored cell (soft blue)
-CL_PATH      = "#A9DFBF"   # final path (soft green)
-CL_PATH_LINE = "#27AE60"   # path outline
-CL_AGENT     = "#F39C12"   # agent dot (amber)
+CL_BG        = "#F8F9FA"  
+CL_GRID      = "#DEE2E6"   
+CL_EMPTY     = "#FFFFFF"
+CL_WALL      = "#343A40" 
+CL_WALL_STK  = "#495057"  
+CL_START     = "#2ECC71" 
+CL_GOAL      = "#E74C3C"  
+CL_VISITED   = "#BDD7EE" 
+CL_PATH      = "#A9DFBF"   
+CL_PATH_LINE = "#27AE60"   
+CL_AGENT     = "#F39C12"  
 CL_AGENT_RIM = "#D68910"
 
 # Panel
-CL_PANEL     = "#1C2833"   # panel bg (deep navy)
-CL_PANEL2    = "#212F3D"   # slightly lighter panel row
+CL_PANEL     = "#1C2833"  
+CL_PANEL2    = "#212F3D"   
 
 CL_WHITE     = "#FFFFFF"
 CL_OFFWHITE  = "#ECF0F1"
 CL_MUTED     = "#95A5A6"
-CL_ACCENT    = "#3498DB"   # accent blue
+CL_ACCENT    = "#3498DB"   
 CL_ACCENT2   = "#5DADE2"
 CL_YELLOW    = "#F1C40F"
 CL_GREEN_LBL = "#2ECC71"
@@ -47,17 +43,15 @@ CL_ORANGE    = "#E67E22"
 
 # Button palette
 BTN = {
-    "run":   ("#27AE60", "#1E8449"),   # green
-    "reset": ("#2980B9", "#1F618D"),   # blue
-    "maze":  ("#8E44AD", "#6C3483"),   # purple
-    "clear": ("#E74C3C", "#CB4335"),   # red
-    "start": ("#1ABC9C", "#148F77"),   # teal
-    "goal":  ("#E67E22", "#CA6F1E"),   # orange
+    "run":   ("#27AE60", "#1E8449"),   
+    "reset": ("#2980B9", "#1F618D"),   
+    "maze":  ("#8E44AD", "#6C3483"),   
+    "clear": ("#E74C3C", "#CB4335"),   
+    "start": ("#1ABC9C", "#148F77"),   
+    "goal":  ("#E67E22", "#CA6F1E"),   
 }
 
-# ═══════════════════════════════════════════════════════
-#  HEURISTICS
-# ═══════════════════════════════════════════════════════
+#  Heuristics
 def manhattan(a, b):
     return abs(a[0]-b[0]) + abs(a[1]-b[1])
 
@@ -730,4 +724,5 @@ if __name__ == "__main__":
     root = tk.Tk()
     app  = PathfinderApp(root)
     root.mainloop()
+
 
