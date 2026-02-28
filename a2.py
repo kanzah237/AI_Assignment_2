@@ -57,10 +57,7 @@ def manhattan(a, b):
 
 def euclidean(a, b):
     return math.hypot(a[0]-b[0], a[1]-b[1])
-
-# ═══════════════════════════════════════════════════════
-#  GRID UTILITIES
-# ═══════════════════════════════════════════════════════
+#  Grid functions
 def make_grid(density=0.0):
     g = [[0]*COLS for _ in range(ROWS)]
     if density > 0:
@@ -86,9 +83,7 @@ def rebuild_path(cf, goal):
     path.reverse()
     return path
 
-# ═══════════════════════════════════════════════════════
-#  SEARCH ALGORITHMS
-# ═══════════════════════════════════════════════════════
+#  Search algo
 def run_astar(grid, start, goal, h):
     counter = 0
     g = {start: 0}
@@ -127,9 +122,7 @@ def run_gbfs(grid, start, goal, h):
                 heapq.heappush(heap, (h(nb, goal), counter, nb))
     return None, visited_order, len(visited_order)
 
-# ═══════════════════════════════════════════════════════
-#  APPLICATION
-# ═══════════════════════════════════════════════════════
+#  Application
 class PathfinderApp:
     def __init__(self, root: tk.Tk):
         self.root = root
@@ -137,19 +130,19 @@ class PathfinderApp:
         self.root.configure(bg=CL_PANEL)
         self.root.resizable(False, False)
 
-        # ── Algorithm / heuristic state ──────────────
+        # heuristic state
         self.alg_var  = tk.StringVar(value="A*")
         self.h_var    = tk.StringVar(value="Manhattan")
         self.dyn_var  = tk.BooleanVar(value=False)
         self.speed_var = tk.IntVar(value=5)   # 1-10
 
-        # ── Grid state ───────────────────────────────
+        # Grid state 
         self.grid      = make_grid()
         self.start     = (1, 1)
         self.goal      = (ROWS-2, COLS-2)
         self._clear_sg()
 
-        # ── Search results ───────────────────────────
+        # Search results
         self.path         = []
         self.path_set     = set()
         self.visited_set  = set()
@@ -164,20 +157,18 @@ class PathfinderApp:
         self._replans     = 0
         self._searching   = False
 
-        # ── Metric string vars ───────────────────────
+        #  Metric string vars
         self.m_nodes  = tk.StringVar(value="—")
         self.m_cost   = tk.StringVar(value="—")
         self.m_time   = tk.StringVar(value="—")
         self.m_replan = tk.StringVar(value="0")
-        self.m_status = tk.StringVar(value="Ready  ·  Draw walls then press  ▶ Run")
+        self.m_status = tk.StringVar(value="Ready  ·  Draw walls then press   Run")
         self.m_alg_info = tk.StringVar(value="")
 
         self._build_ui()
         self._full_redraw()
 
-    # ═══════════════════════════════════════════
-    #  BUILD UI
-    # ═══════════════════════════════════════════
+    #  Build ui
     def _build_ui(self):
         CW = COLS * CELL
         CH = ROWS * CELL
@@ -724,5 +715,6 @@ if __name__ == "__main__":
     root = tk.Tk()
     app  = PathfinderApp(root)
     root.mainloop()
+
 
 
