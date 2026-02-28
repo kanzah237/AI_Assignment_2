@@ -1,16 +1,4 @@
-"""
-╔══════════════════════════════════════════════════════╗
-║   AI 2002 – Artificial Intelligence                  ║
-║   Assignment 2, Question 6                           ║
-║   Dynamic Pathfinding Agent                          ║
-║                                                      ║
-║   Algorithms : A*  &  Greedy Best-First Search       ║
-║   Heuristics : Manhattan  &  Euclidean               ║
-║   Library    : tkinter  (built-in, no pip needed)    ║
-║                                                      ║
-║   Run: python dynamic_pathfinding_agent.py           ║
-╚══════════════════════════════════════════════════════╝
-"""
+
 
 import tkinter as tk
 from tkinter import font as tkfont
@@ -742,3 +730,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     app  = PathfinderApp(root)
     root.mainloop()
+
